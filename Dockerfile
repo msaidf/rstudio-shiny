@@ -24,24 +24,9 @@ RUN R --no-save -e "install.packages(c('shiny', 'rmarkdown'), repos='http://cran
 
 RUN cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/
 
-RUN echo 'deb http://s3-us-west-1.amazonaws.com/cloudlabs.apt.repo/production /' | sudo tee -a /etc/apt/sources.list \
-	&& apt-get update \ 
-	&& apt-get install -y --force-yes web-terminal 
-
-RUN apt-get install python-gpgme \
-	&& su rstudio \
-	&& cd /home/rstudio \
-	&& wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf - \
-	&& curl https://www.dropbox.com/download?dl=packages/dropbox.py -o "dropbox.py"
-	&& touch dropbox-install.sh \
-	&& sed -i "\$a#!/bin/bash\n.dropbox-dist/dropboxd &\ndropbox.py start\ndropbox.py exclude add PortableApps SUSENAS Survey DokPenting GSU Archives Bayesian apps ngaji arab phots jobs Air\ Quality\ and\ Health Camera\ Uploads" dropbox-install.sh 
-
 EXPOSE 3838
 EXPOSE 8787
-EXPOSE 8282
-EXPOSE 8888
 
-CMD "/usr/lib/rstudio-server/bin/rserver"
 CMD "shiny-server &"
-CMD "web-terminal start"
+CMD "/usr/lib/rstudio-server/bin/rserver"
 
