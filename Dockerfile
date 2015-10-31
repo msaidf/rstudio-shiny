@@ -24,9 +24,15 @@ RUN R --no-save -e "install.packages(c('shiny', 'rmarkdown'), repos='http://cran
 
 RUN cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/
 
+RUN echo 'deb http://s3-us-west-1.amazonaws.com/cloudlabs.apt.repo/production /' | sudo tee -a /etc/apt/sources.list \
+	&& apt-get update \ 
+	&& apt-get install -y --force-yes web-terminal 
+
 EXPOSE 3838
 EXPOSE 8787
+EXPOSE 8282
 
 CMD "shiny-server &"
 CMD "/usr/lib/rstudio-server/bin/rserver"
+CMD "web-terminal start"
 
