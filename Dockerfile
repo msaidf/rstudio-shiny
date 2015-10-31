@@ -16,7 +16,7 @@ RUN sed -i "\$adeb https://cran.rstudio.com/bin/linux/ubuntu trusty/" /etc/apt/s
 
 RUN wget --no-verbose https://s3.amazonaws.com/rstudio-shiny-server-os-build/ubuntu-12.04/x86_64/VERSION -O "version.txt" \
 	&& VERSION=$(cat version.txt) \
-	&& wget --no-verbose "https://s3.amazonaws.com/rstudio-shiny-server-os-build/
+	&& wget --no-verbose "https://s3.amazonaws.com/rstudio-shiny-server-os-build/"
 
 RUN ubuntu-12.04/x86_64/shiny-server-$VERSION-amd64.deb" -O ss-latest.deb \
 	&& gdebi -n ss-latest.deb \
