@@ -27,6 +27,6 @@ RUN cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/
 EXPOSE 3838
 EXPOSE 8787
 
-CMD ["/usr/lib/rstudio-server/bin/rserver", "--server-daemonize=0", "--server-app-armor-enabled=0"]
+CMD "/usr/lib/rstudio-server/bin/rserver"
 CMD "shiny-server"
 
