@@ -1,2 +1,2 @@
 # rstudio-shiny
-Docker container hosting Rstudio and Shiny server on Ubuntu 14.04
+Docker container hosting Rstudio and Shiny server, as well as Jupyter with IRkernel, on Ubuntu 14.04. A web based terminal is installed but need to be activated using 'web-terminal start'. Neovim is also installed. Zsh has been installed but need to be activated using 'chsh -s /usr/bin/zsh'. Oh-my-zsh is also ready to be activated by 'zsh ~/ohmyzsh-install.sh'. Headless dropbox can be installed by 'chmod +x dropbox-install.sh && sh ~/dropbox-install.sh'
